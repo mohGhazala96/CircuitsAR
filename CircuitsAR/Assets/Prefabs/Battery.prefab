@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1128096007906400090}
   - component: {fileID: 3455119466344824738}
   - component: {fileID: 5321106916522712777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Battery
   m_TagString: Battery
   m_Icon: {fileID: 0}
@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voltage: 0
-  current: 0
+  description: 

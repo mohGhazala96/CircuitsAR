@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 80736905767271238}
   - component: {fileID: 8406707878313063780}
   - component: {fileID: 2744049083023495701}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Led
   m_TagString: Led
   m_Icon: {fileID: 0}
@@ -127,3 +127,5 @@ MonoBehaviour:
   voltage: 0
   idealVoltage: 0
   idealCurrent: 0
+  description: 
+  index: 0

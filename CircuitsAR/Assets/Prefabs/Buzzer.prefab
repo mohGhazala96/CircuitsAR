@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6037877452457379583}
   - component: {fileID: 8710533182613644841}
   - component: {fileID: 9003784358252447924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buzzer
   m_TagString: Buzzer
   m_Icon: {fileID: 0}
@@ -127,3 +127,5 @@ MonoBehaviour:
   voltage: 0
   idealVoltage: 0
   idealCurrent: 0
+  description: 
+  index: 0

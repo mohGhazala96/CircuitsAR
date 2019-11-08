@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d41d8532a85d48e0ace0df7093fbb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalCurrent: 0
+  totalResistance: 0
+  mainVoltage: 0
 --- !u!65 &647650168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -411,6 +414,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery
       objectReference: {fileID: 0}
+    - target: {fileID: 1128096007906400091, guid: d5d22ea5380af42adaa6166eb41c1cc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128096007906400095, guid: d5d22ea5380af42adaa6166eb41c1cc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -419,12 +427,12 @@ PrefabInstance:
     - target: {fileID: 1128096007906400095, guid: d5d22ea5380af42adaa6166eb41c1cc6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1128096007906400095, guid: d5d22ea5380af42adaa6166eb41c1cc6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 1128096007906400095, guid: d5d22ea5380af42adaa6166eb41c1cc6,
         type: 3}
@@ -466,6 +474,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5321106916522712777, guid: d5d22ea5380af42adaa6166eb41c1cc6,
+        type: 3}
+      propertyPath: voltage
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d22ea5380af42adaa6166eb41c1cc6, type: 3}
 --- !u!1001 &2341757826469792679
@@ -479,6 +492,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sound Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850852014868737083, guid: da8441c3ffca242fb95827f364471d7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850852014868737083, guid: da8441c3ffca242fb95827f364471d7e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5823977143833079697, guid: da8441c3ffca242fb95827f364471d7e,
         type: 3}
@@ -549,15 +572,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Led
       objectReference: {fileID: 0}
+    - target: {fileID: 8990820470569183889, guid: 3a59b136b082146a093c6c73484f5d7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8990820470569183889, guid: 3a59b136b082146a093c6c73484f5d7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5179016138249129064, guid: 3a59b136b082146a093c6c73484f5d7d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.66
       objectReference: {fileID: 0}
     - target: {fileID: 5179016138249129064, guid: 3a59b136b082146a093c6c73484f5d7d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5179016138249129064, guid: 3a59b136b082146a093c6c73484f5d7d,
         type: 3}
@@ -604,6 +637,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2744049083023495701, guid: 3a59b136b082146a093c6c73484f5d7d,
+        type: 3}
+      propertyPath: resistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a59b136b082146a093c6c73484f5d7d, type: 3}
 --- !u!1001 &6620773959801170169
@@ -617,6 +655,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Resistor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855173552627984672, guid: 2bfa55153dc954aef8fad7c45485512f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855173552627984672, guid: 2bfa55153dc954aef8fad7c45485512f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8026397012518251326, guid: 2bfa55153dc954aef8fad7c45485512f,
         type: 3}
@@ -673,6 +721,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 396505914011053230, guid: 2bfa55153dc954aef8fad7c45485512f,
+        type: 3}
+      propertyPath: resistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bfa55153dc954aef8fad7c45485512f, type: 3}
 --- !u!1001 &8400504628008738431
@@ -687,6 +740,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buzzer
       objectReference: {fileID: 0}
+    - target: {fileID: 288734669107088944, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 288734669107088944, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -695,12 +758,12 @@ PrefabInstance:
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
@@ -741,6 +804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003784358252447924, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
+        type: 3}
+      propertyPath: resistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ab89e6da1fe40c29716dd4e0a790c3, type: 3}

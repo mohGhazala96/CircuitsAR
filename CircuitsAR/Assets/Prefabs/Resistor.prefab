@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5418146743062035999}
   - component: {fileID: 4495376400408931344}
   - component: {fileID: 396505914011053230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Resistor
   m_TagString: Resistor
   m_Icon: {fileID: 0}
@@ -128,6 +128,8 @@ MonoBehaviour:
   voltage: 0
   idealVoltage: 0
   idealCurrent: 0
+  description: 
+  index: 0
 --- !u!114 &396505914011053230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +145,5 @@ MonoBehaviour:
   resistance: 0
   current: 0
   voltage: 0
+  description: 
+  index: 0
