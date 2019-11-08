@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6501056731587384581}
   - component: {fileID: 7158620560697934972}
   - component: {fileID: 5418146743062035999}
-  - component: {fileID: 4495376400408931344}
   - component: {fileID: 396505914011053230}
   m_Layer: 8
   m_Name: Resistor
@@ -111,25 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4495376400408931344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6855173552627984672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10bf47e8be88944cc8ad6852d44d2e70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resistance: 0
-  current: 0
-  voltage: 0
-  idealVoltage: 0
-  idealCurrent: 0
-  description: 
-  index: 0
 --- !u!114 &396505914011053230
 MonoBehaviour:
   m_ObjectHideFlags: 0
