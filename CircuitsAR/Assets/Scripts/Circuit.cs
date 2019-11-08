@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Circuit : MonoBehaviour
 {
-    float current;
-    float totalResistance;
-    float mainVoltage;
+    public float totalCurrent;
+    public float totalResistance;
+    public float mainVoltage;
     List<GameObject> components;
     int resistorIndex = 0;
     int buzzerIndex = 0;
@@ -19,86 +19,137 @@ public class Circuit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        UpdateCircuit(other.gameObject, true, false);
+        UpdateCircuit(other.gameObject, true);
 
     }
+
     private void OnTriggerExit(Collider other)
     {
-        UpdateCircuit(other.gameObject, false, false);
+        UpdateCircuit(other.gameObject, false);
     }
 
-    public void UpdateCircuit(GameObject currentElement, bool didEnter, bool onlyUpdate)
+    void UpdateCircuit(GameObject currentElement, bool didEnter)
     {
-        if (!onlyUpdate)
+
+        if (currentElement.tag.Equals("Buzzer") && (currentElement.gameObject.GetComponent<Buzzer>() != null))
         {
-            if (currentElement.tag.Equals("Buzzer") && (currentElement.gameObject.GetComponent<Buzzer>() != null))
+            Buzzer buzzer = currentElement.gameObject.GetComponent<Buzzer>();
+
+            if (didEnter)
             {
-                Buzzer buzzer = currentElement.gameObject.GetComponent<Buzzer>();
-
-                if (didEnter)
-                {
-                    totalResistance += buzzer.resistance;
-                    buzzer.index = buzzerIndex;
-                    buzzerIndex++;
-                }
-                else
-                {
-                    totalResistance -= buzzer.resistance;
-                    RemoveComponent(currentElement, buzzer.index);
-                }
-
+                buzzer.index = buzzerIndex;
+                buzzerIndex++;
+                components.Add(currentElement);
             }
-            else if (currentElement.tag.Equals("Led") && (currentElement.gameObject.GetComponent<Led>() != null))
+            else
             {
-                Led led = currentElement.gameObject.GetComponent<Led>();
-                if (didEnter)
-                {
-                    totalResistance += led.resistance;
-                    led.index = ledIndex;
-                    ledIndex++;
-                }
-                else
-                {
-                    totalResistance -= led.resistance;
-                    RemoveComponent(currentElement, led.index);
-                }
+                RemoveComponent(currentElement, buzzer.index);
+            }
+
+        }
+        else if (currentElement.tag.Equals("Led") && (currentElement.gameObject.GetComponent<Led>() != null))
+        {
+            Led led = currentElement.gameObject.GetComponent<Led>();
+            if (didEnter)
+            {
+                led.index = ledIndex;
+                ledIndex++;
+                components.Add(currentElement);
 
             }
-            else if (currentElement.tag.Equals("Resistor") && (currentElement.gameObject.GetComponent<Resistor>() != null))
+            else
             {
-                Resistor resistor = currentElement.gameObject.GetComponent<Resistor>();
-                if (didEnter)
-                {
-                    totalResistance += resistor.resistance;
-                    resistor.index = resistorIndex;
-                    resistorIndex++;
-                }
-                else
-                {
-                    totalResistance -= resistor.resistance;
-                    RemoveComponent(currentElement, resistor.index);
-                }
+                RemoveComponent(currentElement, led.index);
             }
-            else if (currentElement.tag.Equals("Battery") && (currentElement.gameObject.GetComponent<Battery>() != null))
+
+        }
+        else if (currentElement.tag.Equals("Resistor") && (currentElement.gameObject.GetComponent<Resistor>() != null))
+        {
+            Resistor resistor = currentElement.gameObject.GetComponent<Resistor>();
+            if (didEnter)
             {
-                Battery battery = currentElement.gameObject.GetComponent<Battery>();
-                if (didEnter)
-                    mainVoltage = battery.voltage;
-                else
-                    mainVoltage = 0;
+                resistor.index = resistorIndex;
+                resistorIndex++;
+                components.Add(currentElement);
+            }
+            else
+            {
+                RemoveComponent(currentElement, resistor.index);
             }
         }
-
-        if (mainVoltage != 0)
+        else if (currentElement.tag.Equals("Battery") && (currentElement.gameObject.GetComponent<Battery>() != null))
         {
-            current = mainVoltage / totalResistance;
+            Battery battery = currentElement.gameObject.GetComponent<Battery>();
+            if (didEnter)
+                mainVoltage = battery.voltage;
+            else
+                mainVoltage = 0;
+        }
+
+
+        if (mainVoltage != 0) //upadting the resistance
+        {
+            UpdateResistance();
+            UpdateComponents();
         }
         else
         {   // turn off all components
-            current = 0;
+            totalCurrent = 0;
             DisableComponents();
         }
     }
+
+    void UpdateResistance()
+    {
+        totalResistance = 0;
+        foreach (GameObject component in components)
+        {
+            if (component.GetComponent<Resistor>() != null)
+            {
+                totalResistance += component.GetComponent<Resistor>().resistance;
+            }
+            else if (component.GetComponent<Led>() != null)
+            {
+                totalResistance += component.GetComponent<Led>().resistance;
+            }
+            else if (component.GetComponent<Buzzer>() != null)
+            {
+                totalResistance += component.GetComponent<Buzzer>().resistance;
+            }
+
+        }
+        totalCurrent = mainVoltage / totalResistance;
+    }
+
+    public void UpdateComponents()
+    {
+        foreach (GameObject component in components)
+        {
+
+            if (component.GetComponent<Resistor>() != null)
+            {
+                Resistor resistor = component.GetComponent<Resistor>();
+                resistor.current = totalCurrent;
+                resistor.voltage = resistor.resistance* resistor.current;
+            }
+            else if (component.GetComponent<Led>() != null)
+            {
+                Led led = component.GetComponent<Led>();
+                led.current = totalCurrent;
+                led.voltage = led.resistance * led.current;
+                // turn on led if it passes ideal values
+            }
+            else if (component.GetComponent<Buzzer>() != null)
+            {
+                Buzzer buzzer = component.GetComponent<Buzzer>();
+                buzzer.current = totalCurrent;
+                buzzer.voltage = buzzer.resistance * buzzer.current;
+                // turn on buzzer if it passes ideal values
+            }
+
+        }
+    }
+
     void DisableComponents()
     {
         foreach (GameObject component in components)
@@ -125,6 +176,7 @@ public class Circuit : MonoBehaviour
 
         }
     }
+
     void RemoveComponent(GameObject component, int index)
     {
         foreach (GameObject currentComponent in components)
@@ -146,6 +198,6 @@ public class Circuit : MonoBehaviour
                 return;
             }
         }
-
+        UpdateComponents();
     }
 }
