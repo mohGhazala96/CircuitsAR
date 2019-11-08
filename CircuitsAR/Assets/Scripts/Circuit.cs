@@ -186,14 +186,20 @@ public class Circuit : MonoBehaviour
                 if (component.GetComponent<Resistor>() != null && component.GetComponent<Resistor>().index == index)
                 {
                     components.Remove(component);
+                    component.GetComponent<Resistor>().current = 0;
+                    component.GetComponent<Resistor>().voltage = 0;
                 }
                 else if (component.GetComponent<Led>() != null && component.GetComponent<Led>().index == index)
                 {
                     components.Remove(component);
+                    component.GetComponent<Led>().current = 0;
+                    component.GetComponent<Led>().voltage = 0;
                 }
                 else if (component.GetComponent<Buzzer>() != null && component.GetComponent<Buzzer>().index == index)
                 {
                     components.Remove(component);
+                    component.GetComponent<Buzzer>().current = 0;
+                    component.GetComponent<Buzzer>().voltage = 0;
                 }
                 return;
             }
