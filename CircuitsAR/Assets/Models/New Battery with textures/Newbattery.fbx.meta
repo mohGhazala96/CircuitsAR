@@ -6,10 +6,30 @@ ModelImporter:
   - first:
       74: 1989289236423521904
     second: Default Take
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey
+    second: {fileID: 2100000, guid: bc16bf3b104864cd1960b986bdc241e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001__untitled
+    second: {fileID: 2100000, guid: 0955b5893a3914aeca3c43e4c610c349, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002__untitled_001
+    second: {fileID: 2100000, guid: a6a81d3ee213a47af886e0edf9c713bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_003
+    second: {fileID: 2100000, guid: 47c95f3831a2a4b5b9bff4d0337d236d, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 2
     materialSearch: 1
     materialLocation: 1
   animations:
