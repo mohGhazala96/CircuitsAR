@@ -7,7 +7,7 @@ public class Resistor : MonoBehaviour
     public float resistance;
     public float current;
     public float voltage;
-    public string description = "";
+    public string description = "resistor";
     public int index; // incase of multiple components
 
 }

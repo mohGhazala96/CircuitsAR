@@ -8,6 +8,7 @@ TagManager:
   - Led
   - Resistor
   - Buzzer
+  - Circuit
   layers:
   - Default
   - TransparentFX

@@ -122,10 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f302cdcb23d174e3d96a1d97ad82007f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistance: 0
+  resistance: 1
   current: 0
   voltage: 0
   idealVoltage: 0
   idealCurrent: 0
-  description: 
+  description: Buzzer
   index: 0

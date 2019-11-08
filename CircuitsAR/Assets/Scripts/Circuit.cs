@@ -6,11 +6,11 @@ public class Circuit : MonoBehaviour
 {
     public float totalCurrent;
     public float totalResistance;
-    public float mainVoltage;
     List<GameObject> components;
     int resistorIndex = 0;
     int buzzerIndex = 0;
     int ledIndex = 0;
+    Battery battery;
 
     private void Start()
     {
@@ -79,24 +79,19 @@ public class Circuit : MonoBehaviour
         }
         else if (currentElement.tag.Equals("Battery") && (currentElement.gameObject.GetComponent<Battery>() != null))
         {
-            Battery battery = currentElement.gameObject.GetComponent<Battery>();
             if (didEnter)
-                mainVoltage = battery.voltage;
+            {
+                battery = currentElement.gameObject.GetComponent<Battery>();
+            }
             else
-                mainVoltage = 0;
+            {
+                battery = null;
+                totalCurrent = 0;
+            }
         }
 
+        UpdateComponents();
 
-        if (mainVoltage != 0) //upadting the resistance
-        {
-            UpdateResistance();
-            UpdateComponents();
-        }
-        else
-        {   // turn off all components
-            totalCurrent = 0;
-            DisableComponents();
-        }
     }
 
     void UpdateResistance()
@@ -118,11 +113,25 @@ public class Circuit : MonoBehaviour
             }
 
         }
-        totalCurrent = mainVoltage / totalResistance;
+        if (battery!=null && battery.voltage != 0)
+        {
+            totalCurrent = battery.voltage / totalResistance;
+        }
+        else
+        {
+            totalCurrent = 0;
+        }
+
+        if (battery != null)
+        {
+            battery.current = totalCurrent;
+        }
     }
 
     public void UpdateComponents()
     {
+        UpdateResistance();
+
         foreach (GameObject component in components)
         {
 
@@ -144,34 +153,14 @@ public class Circuit : MonoBehaviour
                 Buzzer buzzer = component.GetComponent<Buzzer>();
                 buzzer.current = totalCurrent;
                 buzzer.voltage = buzzer.resistance * buzzer.current;
-                SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound,true);
-            }
-
-        }
-    }
-
-    void DisableComponents()
-    {
-        foreach (GameObject component in components)
-        {
-
-            if (component.GetComponent<Resistor>() != null)
-            {
-                component.GetComponent<Resistor>().current = 0;
-                component.GetComponent<Resistor>().voltage = 0;
-
-            }
-            else if (component.GetComponent<Led>() != null)
-            {
-                component.GetComponent<Led>().current = 0;
-                component.GetComponent<Led>().voltage = 0;
-                // turn off light
-            }
-            else if (component.GetComponent<Buzzer>() != null)
-            {
-                component.GetComponent<Buzzer>().current = 0;
-                component.GetComponent<Buzzer>().voltage = 0;
-                SoundManager.Instance.Stop();
+                if (buzzer.current != 0)
+                {
+                    SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound, true);
+                }
+                else
+                {
+                    SoundManager.Instance.Stop();
+                }
             }
 
         }

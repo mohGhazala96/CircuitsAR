@@ -122,10 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10bf47e8be88944cc8ad6852d44d2e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistance: 0
+  resistance: 1
   current: 0
   voltage: 0
   idealVoltage: 0
   idealCurrent: 0
-  description: 
+  description: LED
   index: 0

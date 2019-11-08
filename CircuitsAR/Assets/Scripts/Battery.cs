@@ -5,5 +5,6 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
     public float voltage;
-    public string description= "";
+    public float current;
+    public string description= "battery";
 }

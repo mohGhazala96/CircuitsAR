@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject uiElement;
+    public GameObject canvas;
 
     // Update is called once per frame
     void Update()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray,out hit))
+        if (Input.GetMouseButtonDown(0))
         {
-            var selection = hit.transform;
-            if (selection.CompareTag("Buzzer") && selection.gameObject.GetComponent<Buzzer>()!=null )
+
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                Buzzer buzzer = selection.gameObject.GetComponent<Buzzer>();
-                // retrive the information
-            }
-            else if (selection.CompareTag("Led") && selection.gameObject.GetComponent<Led>() != null)
-            {
-                Led led = selection.gameObject.GetComponent<Led>();
-                // retrive the information
-            }
-            else if (selection.CompareTag("Resistor") && selection.gameObject.GetComponent<Resistor>() != null)
-            {
-                Resistor resistor = selection.gameObject.GetComponent<Resistor>();
-                // retrive the information
-            }
-            else if (selection.CompareTag("Battery") && selection.gameObject.GetComponent<Battery>() != null)
-            {
-                Battery battery = selection.gameObject.GetComponent<Battery>();
-                // retrive the information
+                var selection = hit.transform;
+                if (!selection.CompareTag("Circuit"))
+                {
+                    GameObject currrentUiElement = Instantiate(uiElement, canvas.transform);
+                    UIElement uielement = currrentUiElement.GetComponent<UIElement>();
+                    uielement.element = selection.gameObject;
+                }
+                
             }
         }
     }

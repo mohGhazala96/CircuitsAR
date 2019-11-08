@@ -122,5 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbceaba6616141aab4a50c0565b7893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voltage: 0
-  description: 
+  voltage: 9
+  current: 0
+  description: Battery
