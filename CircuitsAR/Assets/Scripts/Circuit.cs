@@ -144,7 +144,8 @@ public class Circuit : MonoBehaviour
                 Buzzer buzzer = component.GetComponent<Buzzer>();
                 buzzer.current = totalCurrent;
                 buzzer.voltage = buzzer.resistance * buzzer.current;
-                // turn on buzzer if it passes ideal values
+                SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound,true);
+                print("playing music");
             }
 
         }
@@ -171,7 +172,7 @@ public class Circuit : MonoBehaviour
             {
                 component.GetComponent<Buzzer>().current = 0;
                 component.GetComponent<Buzzer>().voltage = 0;
-                // turn off sound
+                SoundManager.Instance.Stop();
             }
 
         }
@@ -200,6 +201,7 @@ public class Circuit : MonoBehaviour
                     components.Remove(component);
                     component.GetComponent<Buzzer>().current = 0;
                     component.GetComponent<Buzzer>().voltage = 0;
+                    SoundManager.Instance.Stop();
                 }
                 return;
             }

@@ -263,7 +263,7 @@ Camera:
   m_GameObject: {fileID: 1283221338}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 2850852014868737083, guid: da8441c3ffca242fb95827f364471d7e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2850852014868737083, guid: da8441c3ffca242fb95827f364471d7e,
         type: 3}
@@ -558,6 +558,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2524693873610028829, guid: da8441c3ffca242fb95827f364471d7e,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524693873610028829, guid: da8441c3ffca242fb95827f364471d7e,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365522058441857706, guid: da8441c3ffca242fb95827f364471d7e,
+        type: 3}
+      propertyPath: buzzerSound.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f487be0052e6487b86872195ff7b9db, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da8441c3ffca242fb95827f364471d7e, type: 3}
 --- !u!1001 &2662494285458286665
@@ -758,7 +773,7 @@ PrefabInstance:
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 519865291562611889, guid: e6ab89e6da1fe40c29716dd4e0a790c3,
         type: 3}
