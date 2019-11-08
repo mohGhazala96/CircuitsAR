@@ -10,5 +10,5 @@ public class Buzzer : MonoBehaviour
     public float idealVoltage; // current at which it will operate optimally
     public float idealCurrent; // current at which it will operate optimally
     public string description = "";
-
+    public int index; // incase of multiple components
 }
