@@ -145,7 +145,6 @@ public class Circuit : MonoBehaviour
                 buzzer.current = totalCurrent;
                 buzzer.voltage = buzzer.resistance * buzzer.current;
                 SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound,true);
-                print("playing music");
             }
 
         }
