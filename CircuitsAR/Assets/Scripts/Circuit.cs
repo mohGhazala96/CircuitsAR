@@ -146,8 +146,22 @@ public class Circuit : MonoBehaviour
                 Led led = component.GetComponent<Led>();
                 led.current = totalCurrent;
                 led.voltage = led.resistance * led.current;
-                // turn on led if it passes ideal values
-            }
+                if (led.current != 0)
+                {
+                    // get ideal value
+                    int currentVoltage = (int)battery.voltage;
+                    int maxBrightness = 200;
+                    float currentBrightness = led.voltage * maxBrightness / currentVoltage;
+                    //
+                    led.lampMaterial.color =new Color32(255, 173, 0, (byte)currentBrightness);
+				}
+				else
+				{
+					component.GetComponent<Led>().lampMaterial.color = new Color32(255, 173, 0, 0);
+
+				}
+
+			}
             else if (component.GetComponent<Buzzer>() != null)
             {
                 Buzzer buzzer = component.GetComponent<Buzzer>();
@@ -156,12 +170,16 @@ public class Circuit : MonoBehaviour
                 if (buzzer.current != 0)
                 {
                     SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound, true);
-                }
-                else
-                {
-                    SoundManager.Instance.Stop();
-                }
-            }
+					SoundManager.Instance.audioSource.volume = (buzzer.voltage / (float)battery.voltage) *1;
+                   
+				}
+				else
+				{
+					SoundManager.Instance.Stop();
+
+				}
+
+			}
 
         }
     }
@@ -183,6 +201,7 @@ public class Circuit : MonoBehaviour
                     components.Remove(component);
                     component.GetComponent<Led>().current = 0;
                     component.GetComponent<Led>().voltage = 0;
+                    component.GetComponent<Led>().lampMaterial.color = new Color32(255, 173, 0, 0);
                 }
                 else if (component.GetComponent<Buzzer>() != null && component.GetComponent<Buzzer>().index == index)
                 {

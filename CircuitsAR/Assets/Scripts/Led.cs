@@ -10,6 +10,7 @@ public class Led : MonoBehaviour
     public float idealVoltage; // current at which it will operate optimally
     public float idealCurrent; // current at which it will operate optimally
     public string description = "led";
+    public Material lampMaterial;
     public int index; // incase of multiple components
 
 }

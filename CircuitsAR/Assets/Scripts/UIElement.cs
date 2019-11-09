@@ -30,31 +30,31 @@ public class UIElement : MonoBehaviour
         if (element.CompareTag("Buzzer") && element.gameObject.GetComponent<Buzzer>() != null)
         {
             Buzzer buzzer = element.gameObject.GetComponent<Buzzer>();
-            voltage.text = "Voltage: " + buzzer.voltage;
-            current.text = "Current: " + buzzer.current;
+            voltage.text = "Voltage: " + buzzer.voltage.ToString("F2"); ;
+            current.text = "Current: " + buzzer.current.ToString("F2"); ;
             resitance.text = "Resitance: " + buzzer.resistance;
             description.text = "Description: " + buzzer.description;
-            slider.enabled = false;
+            slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Led") && element.gameObject.GetComponent<Led>() != null)
         {
             Led led = element.gameObject.GetComponent<Led>();
-            voltage.text = "Voltage: " + led.voltage;
-            current.text = "Current: " + led.current;
+            voltage.text = "Voltage: " + led.voltage.ToString("F2"); ;
+            current.text = "Current: " + led.current.ToString("F2"); ;
             resitance.text = "Resitance: " + led.resistance;
             description.text = "Description: " + led.description;
-            slider.enabled = false;
+            slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Resistor") && element.gameObject.GetComponent<Resistor>() != null)
         {
             Resistor resistor = element.gameObject.GetComponent<Resistor>();
             oldValue = (int)resistor.resistance;
 
-            voltage.text = "Voltage: " + resistor.voltage;
-            current.text = "Current: " + resistor.current;
+            voltage.text = "Voltage: " + resistor.voltage.ToString("F2");
+            current.text = "Current: " + resistor.current.ToString("F2"); ;
             resitance.text = "Resitance: " + (int)resistor.resistance;
             description.text = "Description: " + resistor.description;
-            slider.maxValue = 100;
+            slider.maxValue = 10;
             slider.minValue = 0;
             if (!setSlider)
             {
