@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Wire" size="1.000000 1.118421" />
+    <ImageTarget name="LED" size="1.000000 1.118421" />
+    <ImageTarget name="Buzzer" size="1.000000 1.118421" />
+    <ImageTarget name="Resistor" size="1.000000 1.118421" />
+    <ImageTarget name="Battery" size="1.000000 1.118421" />
+  </Tracking>
+</QCARConfig>
