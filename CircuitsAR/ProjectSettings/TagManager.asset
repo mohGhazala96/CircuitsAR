@@ -9,6 +9,7 @@ TagManager:
   - Resistor
   - Buzzer
   - Circuit
+  - UIElement
   layers:
   - Default
   - TransparentFX

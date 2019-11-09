@@ -33,7 +33,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + buzzer.voltage.ToString("F2"); ;
             current.text = "Current: " + buzzer.current.ToString("F2"); ;
             resitance.text = "Resitance: " + buzzer.resistance;
-            description.text = "Description: " + buzzer.description;
+            description.text = "Element: " + buzzer.description;
             slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Led") && element.gameObject.GetComponent<Led>() != null)
@@ -42,7 +42,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + led.voltage.ToString("F2"); ;
             current.text = "Current: " + led.current.ToString("F2"); ;
             resitance.text = "Resitance: " + led.resistance;
-            description.text = "Description: " + led.description;
+            description.text = "Element: " + led.description;
             slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Resistor") && element.gameObject.GetComponent<Resistor>() != null)
@@ -53,7 +53,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + resistor.voltage.ToString("F2");
             current.text = "Current: " + resistor.current.ToString("F2"); ;
             resitance.text = "Resitance: " + (int)resistor.resistance;
-            description.text = "Description: " + resistor.description;
+            description.text = "Element: " + resistor.description;
             slider.maxValue = 10;
             slider.minValue = 0;
             if (!setSlider)
@@ -77,7 +77,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + (int)battery.voltage;
             current.text = "Current: " + battery.current;
             resitance.enabled = false;
-            description.text = "Description: " + battery.description;
+            description.text = "Element: " + battery.description;
             slider.maxValue = 20;
             slider.minValue = 0;
             if (!setSlider)
