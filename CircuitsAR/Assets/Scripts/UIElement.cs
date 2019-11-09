@@ -34,7 +34,7 @@ public class UIElement : MonoBehaviour
             current.text = "Current: " + buzzer.current;
             resitance.text = "Resitance: " + buzzer.resistance;
             description.text = "Description: " + buzzer.description;
-            slider.enabled = false;
+            slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Led") && element.gameObject.GetComponent<Led>() != null)
         {
@@ -43,7 +43,7 @@ public class UIElement : MonoBehaviour
             current.text = "Current: " + led.current;
             resitance.text = "Resitance: " + led.resistance;
             description.text = "Description: " + led.description;
-            slider.enabled = false;
+            slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Resistor") && element.gameObject.GetComponent<Resistor>() != null)
         {
@@ -54,7 +54,7 @@ public class UIElement : MonoBehaviour
             current.text = "Current: " + resistor.current;
             resitance.text = "Resitance: " + (int)resistor.resistance;
             description.text = "Description: " + resistor.description;
-            slider.maxValue = 100;
+            slider.maxValue = 10;
             slider.minValue = 0;
             if (!setSlider)
             {

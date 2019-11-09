@@ -713,6 +713,7 @@ MonoBehaviour:
   idealVoltage: 0
   idealCurrent: 0
   description: LED
+  lampMaterial: {fileID: 2100000, guid: 6972ffdd3d17f44699de5bee93b39dfc, type: 2}
   index: 0
 --- !u!1 &9128048653983958838
 GameObject:
