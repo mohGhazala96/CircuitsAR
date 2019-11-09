@@ -154,9 +154,14 @@ public class Circuit : MonoBehaviour
                     float currentBrightness = led.voltage * maxBrightness / currentVoltage;
                     //
                     led.lampMaterial.color =new Color32(255, 173, 0, (byte)currentBrightness);
-                }
-          
-            }
+				}
+				else
+				{
+					component.GetComponent<Led>().lampMaterial.color = new Color32(255, 173, 0, 0);
+
+				}
+
+			}
             else if (component.GetComponent<Buzzer>() != null)
             {
                 Buzzer buzzer = component.GetComponent<Buzzer>();
@@ -165,9 +170,14 @@ public class Circuit : MonoBehaviour
                 if (buzzer.current != 0)
                 {
                     SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound, true);
-                }
-               
-            }
+				}
+				else
+				{
+					SoundManager.Instance.Stop();
+
+				}
+
+			}
 
         }
     }
