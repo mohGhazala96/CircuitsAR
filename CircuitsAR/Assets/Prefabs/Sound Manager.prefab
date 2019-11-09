@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -142,5 +142,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSimultaneousSounds: 7
   buzzerSound:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9f487be0052e6487b86872195ff7b9db, type: 3}
     simultaneousPlayCount: 0

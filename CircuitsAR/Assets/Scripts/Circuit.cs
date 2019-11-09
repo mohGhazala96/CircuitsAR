@@ -152,7 +152,6 @@ public class Circuit : MonoBehaviour
                     int currentVoltage = (int)battery.voltage;
                     int maxBrightness = 200;
                     float currentBrightness = led.voltage * maxBrightness / currentVoltage;
-                    print("updating");
                     //
                     led.lampMaterial.color =new Color32(255, 173, 0, (byte)currentBrightness);
                 }

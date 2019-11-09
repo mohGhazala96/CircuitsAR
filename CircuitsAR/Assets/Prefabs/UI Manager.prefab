@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799c84548ccdc4b259ed47ba3dc5e1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiElement: {fileID: 1369486821422516956, guid: 48bbbef766b9f451f903d0b8a568b0ed,
+    type: 3}
+  canvas: {fileID: 0}
