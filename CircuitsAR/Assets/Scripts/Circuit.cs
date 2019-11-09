@@ -170,6 +170,8 @@ public class Circuit : MonoBehaviour
                 if (buzzer.current != 0)
                 {
                     SoundManager.Instance.PlayMusic(SoundManager.Instance.buzzerSound, true);
+					SoundManager.Instance.audioSource.volume = (buzzer.voltage / (float)battery.voltage) *1;
+                   
 				}
 				else
 				{

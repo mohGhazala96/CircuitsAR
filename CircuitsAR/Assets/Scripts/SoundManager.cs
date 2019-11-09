@@ -30,14 +30,13 @@ using System.Collections.Generic;
 
         public static event OnMusicStatusChanged MusicStatusChanged;
 
-        private AudioSource audioSource;
+        public AudioSource audioSource;
         private const string MUTE_PREF_KEY = "MutePreference";
         private const int MUTED = 1;
         private const int UN_MUTED = 0;
         private const string MUSIC_PREF_KEY = "MusicPreference";
         private const int MUSIC_OFF = 0;
         private const int MUSIC_ON = 1;
-
 
         void Awake()
         {
@@ -56,7 +55,6 @@ using System.Collections.Generic;
         {
             // Get audio source component
             audioSource = GetComponent<AudioSource>();
-
             // Set mute based on the valued stored in PlayerPrefs
             SetMute(IsMuted());
         }
