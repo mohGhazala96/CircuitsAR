@@ -11,4 +11,15 @@ public class Buzzer : MonoBehaviour
     public float idealCurrent; // current at which it will operate optimally
     public string description = "buzzer";
     public int index; // incase of multiple components
+    bool isRemoved;
+    private void Start()
+    {
+        isRemoved = false;
+    }
+    private void OnDisable()
+    {
+        Circuit.Instance.RemoveComponent(gameObject, index);
+    
+    }
+
 }

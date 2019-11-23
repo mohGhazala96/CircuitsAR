@@ -30,10 +30,10 @@ public class UIElement : MonoBehaviour
         if (element.CompareTag("Buzzer") && element.gameObject.GetComponent<Buzzer>() != null)
         {
             Buzzer buzzer = element.gameObject.GetComponent<Buzzer>();
-            voltage.text = "Voltage: " + buzzer.voltage.ToString("F2"); ;
-            current.text = "Current: " + buzzer.current.ToString("F2"); ;
+            voltage.text = "Voltage: " + buzzer.voltage.ToString("F2"); 
+            current.text = "Current: " + buzzer.current.ToString("F2"); 
             resitance.text = "Resitance: " + buzzer.resistance;
-            description.text = "Element: " + buzzer.description;
+            description.text = "" + buzzer.description;
             slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Led") && element.gameObject.GetComponent<Led>() != null)
@@ -42,7 +42,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + led.voltage.ToString("F2"); ;
             current.text = "Current: " + led.current.ToString("F2"); ;
             resitance.text = "Resitance: " + led.resistance;
-            description.text = "Element: " + led.description;
+            description.text = "" + led.description;
             slider.gameObject.SetActive(false);
         }
         else if (element.CompareTag("Resistor") && element.gameObject.GetComponent<Resistor>() != null)
@@ -53,7 +53,7 @@ public class UIElement : MonoBehaviour
             voltage.text = "Voltage: " + resistor.voltage.ToString("F2");
             current.text = "Current: " + resistor.current.ToString("F2"); ;
             resitance.text = "Resitance: " + (int)resistor.resistance;
-            description.text = "Element: " + resistor.description;
+            description.text = "" + resistor.description;
             slider.maxValue = 10;
             slider.minValue = 0;
             if (!setSlider)
@@ -75,9 +75,9 @@ public class UIElement : MonoBehaviour
             Battery battery = element.gameObject.GetComponent<Battery>();
             oldValue= (int)battery.voltage;
             voltage.text = "Voltage: " + (int)battery.voltage;
-            current.text = "Current: " + battery.current;
+            current.text = "Current: " + battery.current.ToString("F2"); ;
             resitance.enabled = false;
-            description.text = "Element: " + battery.description;
+            description.text = "" + battery.description;
             slider.maxValue = 20;
             slider.minValue = 0;
             if (!setSlider)
@@ -89,7 +89,6 @@ public class UIElement : MonoBehaviour
             {
                 Circuit circuit = FindObjectOfType<Circuit>();
                 circuit.UpdateComponents();
-                print("updating");
 
             }
             setSlider = true;

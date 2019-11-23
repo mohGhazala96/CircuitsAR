@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class Circuit : MonoBehaviour
 {
+    private static Circuit instance;
+
+    public static Circuit Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Circuit>();
+            }
+            return instance;
+        }
+    }
+
+
     public float totalCurrent;
     public float totalResistance;
     List<GameObject> components;
@@ -11,10 +26,27 @@ public class Circuit : MonoBehaviour
     int buzzerIndex = 0;
     int ledIndex = 0;
     Battery battery;
+    LevelManager levelManager;
 
     private void Start()
     {
         components = new List<GameObject>();
+    }
+    void CheckLevel()
+    {
+        if (!levelManager.isFreePlay)
+        {
+            if (levelManager.isFirstLevel)
+            {
+                if (resistorIndex == 1 && totalCurrent != 0 && ledIndex == 0)
+                    levelManager.isFinished = true;
+            }
+            else
+            {
+                if (resistorIndex == 0 && totalCurrent != 0 && ledIndex == 0 && buzzerIndex == 0)
+                    levelManager.isFinished = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,6 +72,7 @@ public class Circuit : MonoBehaviour
                 buzzer.index = buzzerIndex;
                 buzzerIndex++;
                 components.Add(currentElement);
+                print("added buzzer");
             }
             else
             {
@@ -113,6 +146,7 @@ public class Circuit : MonoBehaviour
             }
 
         }
+        print("resistance is " + totalResistance);
         if (battery!=null && battery.voltage != 0)
         {
             totalCurrent = battery.voltage / totalResistance;
@@ -184,7 +218,7 @@ public class Circuit : MonoBehaviour
         }
     }
 
-    void RemoveComponent(GameObject component, int index)
+    public void RemoveComponent(GameObject component, int index)
     {
         foreach (GameObject currentComponent in components)
         {
@@ -206,11 +240,13 @@ public class Circuit : MonoBehaviour
                 else if (component.GetComponent<Buzzer>() != null && component.GetComponent<Buzzer>().index == index)
                 {
                     components.Remove(component);
+                    print("removed");
                     component.GetComponent<Buzzer>().current = 0;
                     component.GetComponent<Buzzer>().voltage = 0;
                     SoundManager.Instance.Stop();
                 }
-                return;
+                break;
+
             }
         }
         UpdateComponents();

@@ -9,5 +9,15 @@ public class Resistor : MonoBehaviour
     public float voltage;
     public string description = "resistor";
     public int index; // incase of multiple components
+    bool isRemoved;
+    private void Start()
+    {
+        isRemoved = false;
+    }
+    private void OnDisable()
+    {
+
+        Circuit.Instance.RemoveComponent(gameObject, index);
+    }
 
 }

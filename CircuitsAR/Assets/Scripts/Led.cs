@@ -12,5 +12,15 @@ public class Led : MonoBehaviour
     public string description = "led";
     public Material lampMaterial;
     public int index; // incase of multiple components
+    bool isRemoved;
+    private void Start()
+    {
+        lampMaterial.color = new Color32(255, 173, 0, 0);
+        isRemoved = false;
+    }
+    private void OnDisable()
+    {
+        Circuit.Instance.RemoveComponent(gameObject, index);
 
+    }
 }
