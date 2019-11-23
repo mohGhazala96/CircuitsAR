@@ -26,7 +26,10 @@ public class Circuit : MonoBehaviour
     int buzzerIndex = 0;
     int ledIndex = 0;
     Battery battery;
-    LevelManager levelManager;
+    public LevelManager levelManager;
+    public int resistorCount = 0;
+    public int buzzerCount = 0;
+    public int ledCount = 0;
 
     private void Start()
     {
@@ -38,12 +41,12 @@ public class Circuit : MonoBehaviour
         {
             if (levelManager.isFirstLevel)
             {
-                if (resistorIndex == 1 && totalCurrent != 0 && ledIndex == 0)
+                if (resistorCount == 2 && totalCurrent != 0 && ledCount == 1 && buzzerCount == 0)
                     levelManager.isFinished = true;
             }
             else
             {
-                if (resistorIndex == 0 && totalCurrent != 0 && ledIndex == 0 && buzzerIndex == 0)
+                if (resistorCount == 1 && totalCurrent != 0 && ledCount == 1 && buzzerCount == 1)
                     levelManager.isFinished = true;
             }
         }
@@ -73,6 +76,7 @@ public class Circuit : MonoBehaviour
                 buzzerIndex++;
                 components.Add(currentElement);
                 print("added buzzer");
+                buzzerCount++;
             }
             else
             {
@@ -88,6 +92,7 @@ public class Circuit : MonoBehaviour
                 led.index = ledIndex;
                 ledIndex++;
                 components.Add(currentElement);
+                ledCount++;
 
             }
             else
@@ -104,6 +109,7 @@ public class Circuit : MonoBehaviour
                 resistor.index = resistorIndex;
                 resistorIndex++;
                 components.Add(currentElement);
+                resistorCount++;
             }
             else
             {
@@ -165,7 +171,7 @@ public class Circuit : MonoBehaviour
     public void UpdateComponents()
     {
         UpdateResistance();
-
+        CheckLevel();
         foreach (GameObject component in components)
         {
 
@@ -226,12 +232,14 @@ public class Circuit : MonoBehaviour
             {
                 if (component.GetComponent<Resistor>() != null && component.GetComponent<Resistor>().index == index)
                 {
+                    resistorCount--;
                     components.Remove(component);
                     component.GetComponent<Resistor>().current = 0;
                     component.GetComponent<Resistor>().voltage = 0;
                 }
                 else if (component.GetComponent<Led>() != null && component.GetComponent<Led>().index == index)
                 {
+                    ledCount--;
                     components.Remove(component);
                     component.GetComponent<Led>().current = 0;
                     component.GetComponent<Led>().voltage = 0;
@@ -239,8 +247,8 @@ public class Circuit : MonoBehaviour
                 }
                 else if (component.GetComponent<Buzzer>() != null && component.GetComponent<Buzzer>().index == index)
                 {
+                    buzzerCount--;
                     components.Remove(component);
-                    print("removed");
                     component.GetComponent<Buzzer>().current = 0;
                     component.GetComponent<Buzzer>().voltage = 0;
                     SoundManager.Instance.Stop();

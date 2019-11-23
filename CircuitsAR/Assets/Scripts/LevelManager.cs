@@ -8,10 +8,25 @@ public class LevelManager : MonoBehaviour
     public bool isFreePlay;
     public bool isFinished;
     public float time = 0;
+    public float requiredCurrent=0;
+    public int mode;
     // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
-        
+        if (mode == 0)
+        {
+            isFreePlay = true;
+        }
+        else if (mode == 1)
+        {
+            ChooseLevel1();
+            requiredCurrent = 3;
+        }
+        else if (mode == 2)
+        {
+            ChooseLevel2();
+            requiredCurrent = 5;
+        }
     }
     public void ChooseLevel1()
     {

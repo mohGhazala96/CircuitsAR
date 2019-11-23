@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -12,9 +14,11 @@ public class UIManager : MonoBehaviour
     static bool isBuzzerMenuOpen;
     static bool isLedMenuOpen;
     static public bool instantiate;
-
+    public Text currentRequired;
     static public int mode = 0;
     public bool closed;
+    public LevelManager levelManager;
+
     private void Start()
     {
         closed = false;
@@ -22,7 +26,24 @@ public class UIManager : MonoBehaviour
         isResistorMenuOpen = false;
         isBuzzerMenuOpen = false;
         isLedMenuOpen = false;
-    }
+        print("started");
+        if (levelManager != null)
+        {
+            levelManager.mode = mode;
+            levelManager.Init();
+
+            if (!levelManager.isFreePlay)
+            {
+                currentRequired.gameObject.SetActive(false);
+                currentRequired.text = "Required Current:" + levelManager.requiredCurrent;
+            }
+            else
+            {
+                currentRequired.gameObject.SetActive(false);
+            }
+        }
+
+     }
     // Update is called once per frame
     void Update()
     {
