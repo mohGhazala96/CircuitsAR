@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class UIManager : MonoBehaviour
     static bool isBuzzerMenuOpen;
     static bool isLedMenuOpen;
     static public bool instantiate;
+
+    static public int mode = 0;
     public bool closed;
     private void Start()
     {
@@ -75,5 +78,21 @@ public class UIManager : MonoBehaviour
         }
 
 
+    }
+
+    public void setMode(int m)
+    {
+        mode = m;
+        SceneManager.LoadScene("AR Scene");
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
+    public void goToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
