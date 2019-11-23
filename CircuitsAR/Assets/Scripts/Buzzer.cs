@@ -18,7 +18,8 @@ public class Buzzer : MonoBehaviour
     }
     private void OnDisable()
     {
-        Circuit.Instance.RemoveComponent(gameObject, index);
+        if (Circuit.Instance != null)
+            Circuit.Instance.RemoveComponent(gameObject, index);
     
     }
 

@@ -14,10 +14,11 @@ public class Battery : MonoBehaviour
     }
     private void OnDisable()
     {
-
-        Circuit.Instance.totalCurrent = 0;
-        Circuit.Instance.UpdateComponents();
-
+        if (Circuit.Instance != null)
+        {
+            Circuit.Instance.totalCurrent = 0;
+            Circuit.Instance.UpdateComponents();
+        }
     }
 
 }
