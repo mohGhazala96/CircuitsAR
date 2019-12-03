@@ -1851,7 +1851,7 @@ PrefabInstance:
     - target: {fileID: 5548565070521456194, guid: acf3a10e1c0e74eb39c862581b6418c5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.41
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 5548565070521456194, guid: acf3a10e1c0e74eb39c862581b6418c5,
         type: 3}
@@ -1901,12 +1901,12 @@ PrefabInstance:
     - target: {fileID: 5548565070521456194, guid: acf3a10e1c0e74eb39c862581b6418c5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5548565070521456194, guid: acf3a10e1c0e74eb39c862581b6418c5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.28
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 337823507, guid: acf3a10e1c0e74eb39c862581b6418c5, type: 3}
       propertyPath: levelManager
@@ -1965,34 +1965,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!21 &1342230441
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'CircuitMaterial
-
-    14370'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3b4ceaa657084e3eb1ca3b16576fd95a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!43 &1401214751
 Mesh:
   m_ObjectHideFlags: 0
@@ -2576,7 +2548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1342230441}
+  - {fileID: 1748288012}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2805,6 +2777,34 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 8d9a470aacc841e8bcb15a8223db4859, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!21 &1748288012
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'CircuitMaterial
+
+    14970'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3b4ceaa657084e3eb1ca3b16576fd95a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
