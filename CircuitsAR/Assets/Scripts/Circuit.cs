@@ -41,12 +41,12 @@ public class Circuit : MonoBehaviour
         {
             if (levelManager.isFirstLevel)
             {
-                if (resistorCount == 2 && totalCurrent != 0 && ledCount == 1 && buzzerCount == 0)
+                if (resistorCount == 2 && totalCurrent - levelManager.requiredCurrent <= 0.1f && ledCount == 1 && buzzerCount == 0)
                     levelManager.isFinished = true;
             }
             else
             {
-                if (resistorCount == 1 && totalCurrent != 0 && ledCount == 1 && buzzerCount == 1)
+                if (resistorCount == 1 && totalCurrent - levelManager.requiredCurrent<=0.1f && ledCount == 1 && buzzerCount == 1)
                     levelManager.isFinished = true;
             }
         }
@@ -152,7 +152,6 @@ public class Circuit : MonoBehaviour
             }
 
         }
-        print("resistance is " + totalResistance);
         if (battery!=null && battery.voltage != 0)
         {
             totalCurrent = battery.voltage / totalResistance;

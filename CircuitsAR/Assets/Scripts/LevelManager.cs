@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public float time = 0;
     public float requiredCurrent=0;
     public int mode;
+    public UIManager uIManager;
     // Start is called before the first frame update
     public void Init()
     {
@@ -20,12 +21,12 @@ public class LevelManager : MonoBehaviour
         else if (mode == 1)
         {
             ChooseLevel1();
-            requiredCurrent = 3;
+            requiredCurrent = 6;
         }
         else if (mode == 2)
         {
             ChooseLevel2();
-            requiredCurrent = 5;
+            requiredCurrent = 3;
         }
     }
     public void ChooseLevel1()
@@ -42,6 +43,9 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if(!isFinished&& !isFreePlay)
+        {
             time += Time.deltaTime;
+            uIManager.timeCounter.text = "Time: "+time.ToString("F2");
+        }
     }
 }

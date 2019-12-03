@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     static bool isLedMenuOpen;
     static public bool instantiate;
     public Text currentRequired;
+    public Text timeCounter;
     static public int mode = 0;
     public bool closed;
     public LevelManager levelManager;
@@ -26,7 +27,6 @@ public class UIManager : MonoBehaviour
         isResistorMenuOpen = false;
         isBuzzerMenuOpen = false;
         isLedMenuOpen = false;
-        print("started");
         if (levelManager != null)
         {
             levelManager.mode = mode;
@@ -34,12 +34,14 @@ public class UIManager : MonoBehaviour
 
             if (!levelManager.isFreePlay)
             {
-                currentRequired.gameObject.SetActive(false);
+                currentRequired.gameObject.SetActive(true);
+                timeCounter.gameObject.SetActive(true);
                 currentRequired.text = "Required Current:" + levelManager.requiredCurrent;
             }
             else
             {
                 currentRequired.gameObject.SetActive(false);
+                timeCounter.gameObject.SetActive(false);
             }
         }
 
@@ -104,7 +106,7 @@ public class UIManager : MonoBehaviour
     public void setMode(int m)
     {
         mode = m;
-        SceneManager.LoadScene("AR Scene");
+        SceneManager.LoadScene("Game Scene");
     }
 
     public void quitGame()
