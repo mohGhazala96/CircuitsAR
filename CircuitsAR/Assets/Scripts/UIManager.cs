@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
     public void setMode(int m)
     {
         mode = m;
-        SceneManager.LoadScene("Game Scene");
+        SceneManager.LoadScene("AR Scene");
     }
 
     public void quitGame()
