@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     static public int mode = 0;
     public bool closed;
     public LevelManager levelManager;
+    public GameObject levelFinishedPanel;
+    public Text levelTime;
 
     private void Start()
     {
@@ -117,5 +119,10 @@ public class UIManager : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+    public void EndLevel()
+    {
+        levelTime.text = "Time Taken: "+levelManager.time.ToString("F2");
+        levelFinishedPanel.SetActive(true);
     }
 }

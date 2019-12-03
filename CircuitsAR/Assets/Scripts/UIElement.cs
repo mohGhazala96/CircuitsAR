@@ -12,7 +12,7 @@ public class UIElement : MonoBehaviour
     public Text description;
     public Slider slider;
     public Button closeButton;
-    int oldValue;// used to update components
+    float oldValue;// used to update components
     bool setSlider;
     void Start()
     {
@@ -29,71 +29,101 @@ public class UIElement : MonoBehaviour
     {
         if (element.CompareTag("Buzzer") && element.gameObject.GetComponent<Buzzer>() != null)
         {
-            Buzzer buzzer = element.gameObject.GetComponent<Buzzer>();
-            voltage.text = "Voltage: " + buzzer.voltage.ToString("F2"); 
-            current.text = "Current: " + buzzer.current.ToString("F2"); 
-            resitance.text = "Resitance: " + buzzer.resistance;
-            description.text = "" + buzzer.description;
-            slider.gameObject.SetActive(false);
+            if (element.activeSelf)
+            {
+                Buzzer buzzer = element.gameObject.GetComponent<Buzzer>();
+                voltage.text = "Voltage: " + buzzer.voltage.ToString("F2");
+                current.text = "Current: " + buzzer.current.ToString("F2");
+                resitance.text = "Resitance: " + buzzer.resistance;
+                description.text = "" + buzzer.description;
+                slider.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
         }
         else if (element.CompareTag("Led") && element.gameObject.GetComponent<Led>() != null)
         {
-            Led led = element.gameObject.GetComponent<Led>();
-            voltage.text = "Voltage: " + led.voltage.ToString("F2"); ;
-            current.text = "Current: " + led.current.ToString("F2"); ;
-            resitance.text = "Resitance: " + led.resistance;
-            description.text = "" + led.description;
-            slider.gameObject.SetActive(false);
+            if (element.activeSelf)
+            {
+                Led led = element.gameObject.GetComponent<Led>();
+                voltage.text = "Voltage: " + led.voltage.ToString("F2"); ;
+                current.text = "Current: " + led.current.ToString("F2"); ;
+                resitance.text = "Resitance: " + led.resistance;
+                description.text = "" + led.description;
+                slider.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         else if (element.CompareTag("Resistor") && element.gameObject.GetComponent<Resistor>() != null)
         {
-            Resistor resistor = element.gameObject.GetComponent<Resistor>();
-            oldValue = (int)resistor.resistance;
-
-            voltage.text = "Voltage: " + resistor.voltage.ToString("F2");
-            current.text = "Current: " + resistor.current.ToString("F2"); ;
-            resitance.text = "Resitance: " + (int)resistor.resistance;
-            description.text = "" + resistor.description;
-            slider.maxValue = 10;
-            slider.minValue = 0;
-            if (!setSlider)
+            if (element.activeSelf)
             {
-                slider.value = resistor.resistance;
-            }
-            resistor.resistance = slider.value;
-            if(oldValue!= resistor.resistance)
-            {
-                Circuit circuit = FindObjectOfType<Circuit>();
-                circuit.UpdateComponents();
-            }
-            setSlider = true;
 
+                Resistor resistor = element.gameObject.GetComponent<Resistor>();
+                oldValue = resistor.resistance;
+
+                voltage.text = "Voltage: " + resistor.voltage.ToString("F2");
+                current.text = "Current: " + resistor.current.ToString("F2"); 
+                resitance.text = "Resitance: " + resistor.resistance.ToString("F2");
+                description.text = "" + resistor.description;
+                slider.maxValue = 2;
+                slider.minValue = 0;
+                if (!setSlider)
+                {
+                    slider.value = resistor.resistance;
+                }
+                resistor.resistance = slider.value;
+                if (Mathf.Approximately(oldValue , resistor.resistance))
+                {
+                    Circuit circuit = FindObjectOfType<Circuit>();
+                    circuit.UpdateComponents();
+                }
+                setSlider = true;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
 
         }
         else if (element.CompareTag("Battery") && element.gameObject.GetComponent<Battery>() != null)
         {
-            Battery battery = element.gameObject.GetComponent<Battery>();
-            oldValue= (int)battery.voltage;
-            voltage.text = "Voltage: " + (int)battery.voltage;
-            current.text = "Current: " + battery.current.ToString("F2"); ;
-            resitance.enabled = false;
-            description.text = "" + battery.description;
-            slider.maxValue = 20;
-            slider.minValue = 0;
-            if (!setSlider)
+            if (element.activeSelf)
             {
-                slider.value = battery.voltage;
-            }
-            battery.voltage = slider.value;
-            if (oldValue != battery.voltage)
-            {
-                Circuit circuit = FindObjectOfType<Circuit>();
-                circuit.UpdateComponents();
 
+                Battery battery = element.gameObject.GetComponent<Battery>();
+                oldValue = battery.voltage;
+                voltage.text = "Voltage: " + (int)battery.voltage;
+                current.text = "Current: " + battery.current.ToString("F2"); ;
+                resitance.enabled = false;
+                description.text = "" + battery.description;
+                slider.maxValue = 20;
+                slider.minValue = 0;
+                if (!setSlider)
+                {
+                    slider.value = battery.voltage;
+                }
+                battery.voltage = slider.value;
+                if (Mathf.Approximately(oldValue, battery.voltage))
+                {
+                    Circuit circuit = FindObjectOfType<Circuit>();
+                    circuit.UpdateComponents();
+
+                }
+                setSlider = true;
             }
-            setSlider = true;
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        gameObject.transform.position = new Vector3(element.transform.position.x, gameObject.transform.position.y, element.transform.position.z) ;
+        gameObject.transform.position = new Vector3(element.transform.position.x, gameObject.transform.position.y, element.transform.position.z);
     }
 }

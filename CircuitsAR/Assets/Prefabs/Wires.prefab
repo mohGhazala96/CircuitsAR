@@ -71,6 +71,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalCurrent: 0
   totalResistance: 0
+  levelManager: {fileID: 0}
+  resistorCount: 0
+  buzzerCount: 0
+  ledCount: 0
 --- !u!23 &5536261665592142499
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 136b6c362533c464e843ef0c587b66d8, type: 3}
+  - {fileID: 2100000, guid: 76dcea0dc1c4a4307a0051908de371d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76dcea0dc1c4a4307a0051908de371d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

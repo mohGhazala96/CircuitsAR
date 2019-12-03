@@ -41,14 +41,27 @@ public class Circuit : MonoBehaviour
         {
             if (levelManager.isFirstLevel)
             {
-                if (resistorCount == 2 && totalCurrent - levelManager.requiredCurrent <= 0.1f && ledCount == 1 && buzzerCount == 0)
+                if (resistorCount == 2 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
+                {
                     levelManager.isFinished = true;
+                    levelManager.uIManager.EndLevel();
+                    print("ending level");
+
+                }
             }
             else
             {
-                if (resistorCount == 1 && totalCurrent - levelManager.requiredCurrent<=0.1f && ledCount == 1 && buzzerCount == 1)
-                    levelManager.isFinished = true;
+
+                if (resistorCount == 1 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 1) { 
+                levelManager.isFinished = true;
+                    levelManager.uIManager.EndLevel();
+                    print("ending level");
+
+                }
+
+
             }
+
         }
     }
 
