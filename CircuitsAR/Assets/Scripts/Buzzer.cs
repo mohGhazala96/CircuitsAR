@@ -18,9 +18,30 @@ public class Buzzer : MonoBehaviour
     }
     private void OnDisable()
     {
+
+        RemoveFromCircuit();
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeSelf)
+        {
+            if (!GetComponent<Collider>().enabled && !isRemoved)
+            {
+                RemoveFromCircuit();
+                isRemoved = true;
+            }
+            else
+            {
+                isRemoved = false;
+            }
+        }
+    }
+
+    private void RemoveFromCircuit()
+    {
         if (Circuit.Instance != null)
             Circuit.Instance.RemoveComponent(gameObject, index);
-    
     }
 
 }
