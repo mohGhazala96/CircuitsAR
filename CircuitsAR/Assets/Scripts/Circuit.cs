@@ -41,7 +41,7 @@ public class Circuit : MonoBehaviour
         {
             if (levelManager.level.Equals(Level.first))
             {
-                if (resistorCount == 2 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
+                if (resistorCount == 2 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.15f && ledCount == 1 && buzzerCount == 0)
                 {
                     levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
@@ -51,7 +51,7 @@ public class Circuit : MonoBehaviour
             else if (levelManager.level.Equals(Level.second))
             {
 
-                if (resistorCount == 1 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 1) { 
+                if (resistorCount == 1 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.15f && ledCount == 1 && buzzerCount == 1) { 
                     levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
 
@@ -59,7 +59,7 @@ public class Circuit : MonoBehaviour
 
 
             }  else if (levelManager.level.Equals(Level.third)){
-                if (resistorCount == 0 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 2 && buzzerCount == 2)
+                if (resistorCount == 0 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.15f && ledCount == 2 && buzzerCount == 2)
                 {
                     levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
@@ -249,14 +249,16 @@ public class Circuit : MonoBehaviour
             {
                 if (component.GetComponent<Resistor>() != null && component.GetComponent<Resistor>().index == index)
                 {
-                    resistorCount--;
+                    if (resistorCount > 0)
+                        resistorCount--;
                     components.Remove(component);
                     component.GetComponent<Resistor>().current = 0;
                     component.GetComponent<Resistor>().voltage = 0;
                 }
                 else if (component.GetComponent<Led>() != null && component.GetComponent<Led>().index == index)
                 {
-                    ledCount--;
+                    if(ledCount>0)
+                        ledCount--;
                     components.Remove(component);
                     component.GetComponent<Led>().current = 0;
                     component.GetComponent<Led>().voltage = 0;
@@ -264,7 +266,8 @@ public class Circuit : MonoBehaviour
                 }
                 else if (component.GetComponent<Buzzer>() != null && component.GetComponent<Buzzer>().index == index)
                 {
-                    buzzerCount--;
+                    if(buzzerCount>0)
+                        buzzerCount--;
                     components.Remove(component);
                     component.GetComponent<Buzzer>().current = 0;
                     component.GetComponent<Buzzer>().voltage = 0;

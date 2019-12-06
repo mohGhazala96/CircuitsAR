@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public LevelManager levelManager;
     public GameObject levelFinishedPanel;
     public Text levelTime;
+    public Text resistors;
+    public Text buzzers;
+    public Text leds;
 
     private void Start()
     {
@@ -38,12 +41,19 @@ public class UIManager : MonoBehaviour
             {
                 currentRequired.gameObject.SetActive(true);
                 timeCounter.gameObject.SetActive(true);
+                resistors.gameObject.SetActive(true);
+                leds.gameObject.SetActive(true);
+                buzzers.gameObject.SetActive(true);
                 currentRequired.text = "Required Current:" + levelManager.requiredCurrent;
             }
             else
             {
                 currentRequired.gameObject.SetActive(false);
                 timeCounter.gameObject.SetActive(false);
+                resistors.gameObject.SetActive(false);
+                leds.gameObject.SetActive(false);
+                buzzers.gameObject.SetActive(false);
+
             }
         }
 
@@ -51,7 +61,13 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!levelManager.isFreePlay)
+        {
+            resistors.text = "Current Resistors: " + Circuit.Instance.resistorCount.ToString();
+            buzzers.text = "Current Buzzers: " + Circuit.Instance.buzzerCount.ToString();
+            leds.text = "Current Leds: "+Circuit.Instance.ledCount.ToString();
 
+        }
         if (Input.GetMouseButtonDown(0) )
         {
 
@@ -125,5 +141,7 @@ public class UIManager : MonoBehaviour
     {
         levelTime.text = "Time Taken: "+levelManager.time.ToString("F2");
         levelFinishedPanel.SetActive(true);
+        SoundManager.Instance.Stop();
+
     }
 }

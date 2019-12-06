@@ -72,18 +72,17 @@ public class UIElement : MonoBehaviour
                 current.text = "Current: " + resistor.current.ToString("F2"); 
                 resitance.text = "Resitance: " + resistor.resistance.ToString("F2");
                 description.text = "" + resistor.description;
-                slider.maxValue = 2;
+                slider.maxValue = 1;
                 slider.minValue = 0;
                 if (!setSlider)
                 {
                     slider.value = resistor.resistance;
                 }
                 resistor.resistance = slider.value;
-                if (Mathf.Approximately(oldValue , resistor.resistance))
-                {
+         
                     Circuit circuit = FindObjectOfType<Circuit>();
                     circuit.UpdateComponents();
-                }
+           
                 setSlider = true;
             }
             else
@@ -110,12 +109,11 @@ public class UIElement : MonoBehaviour
                     slider.value = battery.voltage;
                 }
                 battery.voltage = slider.value;
-                if (Mathf.Approximately(oldValue, battery.voltage))
-                {
+
                     Circuit circuit = FindObjectOfType<Circuit>();
                     circuit.UpdateComponents();
 
-                }
+
                 setSlider = true;
             }
             else

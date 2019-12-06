@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
         if(!isFinished&& !isFreePlay)
         {
             time += Time.deltaTime;
+            SoundManager.Instance.Stop();
             uIManager.timeCounter.text = "Time: "+time.ToString("F2");
         }
     }
