@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
         isResistorMenuOpen = false;
         isBuzzerMenuOpen = false;
         isLedMenuOpen = false;
+        SoundManager.Instance.Stop();
+
         if (levelManager != null)
         {
             levelManager.mode = mode;
@@ -134,8 +136,8 @@ public class UIManager : MonoBehaviour
 
     public void goToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
         SoundManager.Instance.Stop();
+        SceneManager.LoadScene("MainMenu");
     }
     public void EndLevel()
     {

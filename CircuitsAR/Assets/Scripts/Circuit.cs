@@ -34,6 +34,8 @@ public class Circuit : MonoBehaviour
     private void Start()
     {
         components = new List<GameObject>();
+        SoundManager.Instance.Stop();
+
     }
     void CheckLevel()
     {
