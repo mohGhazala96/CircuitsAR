@@ -14,6 +14,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     public void Init()
     {
+        SoundManager.Instance.Stop();
+        Circuit.Instance.totalCurrent = 0;
+        Circuit.Instance.totalResistance = 0;
+        Circuit.Instance.battery = null;
         time = 0;
         if (mode == 0)
         {

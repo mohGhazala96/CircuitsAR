@@ -119,6 +119,7 @@ public class UIManager : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        SoundManager.Instance.Stop();
     }
     public void EndLevel()
     {

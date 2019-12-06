@@ -25,7 +25,7 @@ public class Circuit : MonoBehaviour
     int resistorIndex = 0;
     int buzzerIndex = 0;
     int ledIndex = 0;
-    Battery battery;
+    public Battery battery;
     public LevelManager levelManager;
     public int resistorCount = 0;
     public int buzzerCount = 0;
@@ -41,7 +41,7 @@ public class Circuit : MonoBehaviour
         {
             if (levelManager.isFirstLevel)
             {
-                if (resistorCount == 2 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
+                if (resistorCount == 1 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
                 {
                     levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
