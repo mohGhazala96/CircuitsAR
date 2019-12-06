@@ -39,27 +39,32 @@ public class Circuit : MonoBehaviour
     {
         if (!levelManager.isFreePlay)
         {
-            if (levelManager.isFirstLevel)
+            if (levelManager.level.Equals(Level.first))
             {
-                if (resistorCount == 1 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
+                if (resistorCount == 2 && Mathf.Abs( totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 0)
                 {
                     levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
-                    print("ending level");
 
                 }
             }
-            else
+            else if (levelManager.level.Equals(Level.second))
             {
 
                 if (resistorCount == 1 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 1 && buzzerCount == 1) { 
-                levelManager.isFinished = true;
+                    levelManager.isFinished = true;
                     levelManager.uIManager.EndLevel();
-                    print("ending level");
 
                 }
 
 
+            }  else if (levelManager.level.Equals(Level.third)){
+                if (resistorCount == 0 && Mathf.Abs(totalCurrent - levelManager.requiredCurrent) <= 0.1f && ledCount == 2 && buzzerCount == 2)
+                {
+                    levelManager.isFinished = true;
+                    levelManager.uIManager.EndLevel();
+
+                }
             }
 
         }
