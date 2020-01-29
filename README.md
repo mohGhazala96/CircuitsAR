@@ -5,7 +5,6 @@
 ##### This application was developed using Unity and Vufoira for AR. 
 Downloads:
 As our circuit relies on physical image targets that need to be printed, you can find the target images here:
-:
-​[Circuit]( https://adobe.ly/2Rlzgwf )
+​[Circuit]( https://adobe.ly/2Rlzgwf ) ,
 ​[Components]( https://adobe.ly/357yg2K )  
 After downloading and printing both files, you can cut the components part around the black boxes.
